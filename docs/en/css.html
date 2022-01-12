@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CSS &#8212; pyquery 1.4.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using pseudo classes" href="pseudo_classes.html" />
+    <link rel="prev" title="Attributes" href="attributes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pseudo_classes.html" title="Using pseudo classes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="attributes.html" title="Attributes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CSS</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="css">
+<h1>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h1>
+<p>You can play with css classes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">addClass</span><span class="p">(</span><span class="s2">&quot;toto&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello.toto&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">toggleClass</span><span class="p">(</span><span class="s2">&quot;titi toto&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello.titi&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">removeClass</span><span class="p">(</span><span class="s2">&quot;titi&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+</pre></div>
+</div>
+<p>Or the css style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;font-size&quot;</span><span class="p">,</span> <span class="s2">&quot;15px&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s2">&quot;style&quot;</span><span class="p">)</span>
+<span class="go">&#39;font-size: 15px&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span><span class="p">({</span><span class="s2">&quot;font-size&quot;</span><span class="p">:</span> <span class="s2">&quot;17px&quot;</span><span class="p">})</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s2">&quot;style&quot;</span><span class="p">)</span>
+<span class="go">&#39;font-size: 17px&#39;</span>
+</pre></div>
+</div>
+<p>Same thing the pythonic way (‘_’ characters are translated to ‘-‘):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="s2">&quot;16px&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&#39;font-size: 16px&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span><span class="p">[</span><span class="s1">&#39;font-size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;15px&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&#39;font-size: 15px&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="n">font_size</span><span class="o">=</span><span class="s2">&quot;16px&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&#39;font-size: 16px&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">css</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;font-size&quot;</span><span class="p">:</span> <span class="s2">&quot;17px&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">attr</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&#39;font-size: 17px&#39;</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="attributes.html"
+                        title="previous chapter">Attributes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pseudo_classes.html"
+                        title="next chapter">Using pseudo classes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/css.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pseudo_classes.html" title="Using pseudo classes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="attributes.html" title="Attributes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CSS</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

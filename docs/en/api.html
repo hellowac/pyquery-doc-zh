@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pyquery – PyQuery complete API &#8212; pyquery 1.4.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Scraping" href="scrap.html" />
+    <link rel="prev" title="Traversing" href="traversing.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scrap.html" title="Scraping"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="traversing.html" title="Traversing"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquery</span></code> – PyQuery complete API</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-pyquery.pyquery">
+<span id="pyquery-pyquery-complete-api"></span><h1><a class="reference internal" href="#module-pyquery.pyquery" title="pyquery.pyquery"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquery</span></code></a> – PyQuery complete API<a class="headerlink" href="#module-pyquery.pyquery" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyquery.pyquery.</span></span><span class="sig-name descname"><span class="pre">PyQuery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.Fn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Fn</span></span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.Fn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.Fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook for defining custom function (like the jQuery.fn):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fn</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">this</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">el</span><span class="p">:</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">outerHtml</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PyQuery</span><span class="o">.</span><span class="n">fn</span><span class="o">.</span><span class="n">listOuterHtml</span> <span class="o">=</span> <span class="n">fn</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="s1">&#39;&lt;ol&gt;   &lt;li&gt;Coffee&lt;/li&gt;   &lt;li&gt;Tea&lt;/li&gt;   &lt;li&gt;Milk&lt;/li&gt;   &lt;/ol&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">listOuterHtml</span><span class="p">()</span>
+<span class="go">[&#39;&lt;li&gt;Coffee&lt;/li&gt;&#39;, &#39;&lt;li&gt;Tea&lt;/li&gt;&#39;, &#39;&lt;li&gt;Milk&lt;/li&gt;&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.addClass">
+<span class="sig-name descname"><span class="pre">addClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.addClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.add_class" title="pyquery.pyquery.PyQuery.add_class"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_class()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.add_class">
+<span class="sig-name descname"><span class="pre">add_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.add_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.add_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a css class to elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">add_class</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.myclass&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">addClass</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.myclass&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.after">
+<span class="sig-name descname"><span class="pre">after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.after"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.after" title="Permalink to this definition">¶</a></dt>
+<dd><p>add value after nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>append value to each nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.appendTo">
+<span class="sig-name descname"><span class="pre">appendTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.appendTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.append_to" title="pyquery.pyquery.PyQuery.append_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">append_to()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.append_to">
+<span class="sig-name descname"><span class="pre">append_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.append_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.append_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>append nodes to value</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.base_url">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_url</span></span><a class="headerlink" href="#pyquery.pyquery.PyQuery.base_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the url of current html document or None if not available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.before">
+<span class="sig-name descname"><span class="pre">before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.before"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.before" title="Permalink to this definition">¶</a></dt>
+<dd><p>insert value before nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.children">
+<span class="sig-name descname"><span class="pre">children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter elements that are direct children of self using optional
+selector:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;/span&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">[&lt;span&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">children</span><span class="p">()</span>
+<span class="go">[&lt;p.hello&gt;, &lt;p&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">children</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a copy of nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.closest">
+<span class="sig-name descname"><span class="pre">closest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.closest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.closest" title="Permalink to this definition">¶</a></dt>
+<dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span>
+<span class="gp">... </span> <span class="s1">&#39;&lt;div class=&quot;hello&quot;&gt;&lt;p&gt;This is a &#39;</span>
+<span class="gp">... </span> <span class="s1">&#39;&lt;strong class=&quot;hello&quot;&gt;test&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">closest</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">closest</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">[&lt;strong.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">closest</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.contents">
+<span class="sig-name descname"><span class="pre">contents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.contents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.contents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return contents (with text nodes):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;hello &lt;b&gt;bold&lt;/b&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">contents</span><span class="p">()</span>  
+<span class="go">[&#39;hello &#39;, &lt;Element b at ...&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.each">
+<span class="sig-name descname"><span class="pre">each</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.each"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.each" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply func on each nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove nodes content</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.encoding">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding</span></span><a class="headerlink" href="#pyquery.pyquery.PyQuery.encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the xml encoding of the root element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.end">
+<span class="sig-name descname"><span class="pre">end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break out of a level of traversal and return to the parent level.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;&lt;span&gt;&lt;em&gt;Whoah!&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt; there&lt;/em&gt;&lt;/p&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;em&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+<span class="go">[&lt;p&gt;, &lt;p&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.eq">
+<span class="sig-name descname"><span class="pre">eq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.eq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return PyQuery of only the element with the provided index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">[&lt;p&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend with anoter PyQuery object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter elements in self using selector (string or function):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;, &lt;p&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">[&lt;p&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Hi&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">this</span><span class="p">:</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Hi&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find elements using selector traversing down from self:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;&lt;span&gt;&lt;em&gt;Whoah!&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt; there&lt;/em&gt;&lt;/p&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;em&#39;</span><span class="p">)</span>
+<span class="go">[&lt;em&gt;, &lt;em&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;em&#39;</span><span class="p">)</span>
+<span class="go">[&lt;em&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.hasClass">
+<span class="sig-name descname"><span class="pre">hasClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.hasClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.has_class" title="pyquery.pyquery.PyQuery.has_class"><code class="xref py py-func docutils literal notranslate"><span class="pre">has_class()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.has_class">
+<span class="sig-name descname"><span class="pre">has_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.has_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.has_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if element has class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;myclass&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">has_class</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">hasClass</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.height">
+<span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value=&lt;NoDefault&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>set/get height of element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.hide">
+<span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.hide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.hide" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove display:none to elements style:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div style=&quot;display:none;&quot;/&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">())</span>
+<span class="go">&lt;div style=&quot;display: none&quot;/&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.html">
+<span class="sig-name descname"><span class="pre">html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value=&lt;NoDefault&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.html"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get or set the html representation of sub nodes.</p>
+<p>Get the text value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;toto&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">&lt;span&gt;toto&lt;/span&gt;</span>
+</pre></div>
+</div>
+<p>Extra args are passed to <code class="docutils literal notranslate"><span class="pre">lxml.etree.tostring</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">&lt;span/&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;html&#39;</span><span class="p">))</span>
+<span class="go">&lt;span&gt;&lt;/span&gt;</span>
+</pre></div>
+</div>
+<p>Set the text value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;Youhou !&lt;/span&gt;&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;div&gt;&lt;span&gt;Youhou !&lt;/span&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.insertAfter">
+<span class="sig-name descname"><span class="pre">insertAfter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.insertAfter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.insert_after" title="pyquery.pyquery.PyQuery.insert_after"><code class="xref py py-func docutils literal notranslate"><span class="pre">insert_after()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.insertBefore">
+<span class="sig-name descname"><span class="pre">insertBefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.insertBefore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.insert_before" title="pyquery.pyquery.PyQuery.insert_before"><code class="xref py py-func docutils literal notranslate"><span class="pre">insert_before()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.insert_after">
+<span class="sig-name descname"><span class="pre">insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.insert_after"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.insert_after" title="Permalink to this definition">¶</a></dt>
+<dd><p>insert nodes after value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.insert_before">
+<span class="sig-name descname"><span class="pre">insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.insert_before"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.insert_before" title="Permalink to this definition">¶</a></dt>
+<dd><p>insert nodes before value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.is_">
+<span class="sig-name descname"><span class="pre">is_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.is_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.is_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if selector matches at least one current element, else
+False:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot;&gt;&lt;span&gt;Hi&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iter over elements. Return PyQuery objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;foo&lt;/span&gt;&lt;span&gt;bar&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)]</span>
+<span class="go">[&#39;foo&#39;, &#39;bar&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="go">[&#39;foo&#39;, &#39;bar&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.make_links_absolute">
+<span class="sig-name descname"><span class="pre">make_links_absolute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.make_links_absolute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.make_links_absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make all links absolute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.map">
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new PyQuery after transforming current items with func.</p>
+<p>func should take two arguments - ‘index’ and ‘element’.  Elements can
+also be referred to as ‘this’ inside of func:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot;&gt;Hi there&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;br /&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+<span class="go">[&#39;Hi there&#39;, &#39;Bye&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">PyQuery</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">()))</span>
+<span class="go">[8, 3]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="go">[&#39;Hi&#39;, &#39;there&#39;, &#39;Bye&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.nextAll">
+<span class="sig-name descname"><span class="pre">nextAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.nextAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.next_all" title="pyquery.pyquery.PyQuery.next_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">next_all()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.next_all">
+<span class="sig-name descname"><span class="pre">next_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.next_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.next_all" title="Permalink to this definition">¶</a></dt>
+<dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;&lt;span&gt;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;img scr=&quot;&quot;/&gt;&lt;/span&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:last&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">next_all</span><span class="p">()</span>
+<span class="go">[&lt;img&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:last&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">nextAll</span><span class="p">()</span>
+<span class="go">[&lt;img&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.not_">
+<span class="sig-name descname"><span class="pre">not_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.not_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.not_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return elements that don’t match the given selector:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">not_</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.outerHtml">
+<span class="sig-name descname"><span class="pre">outerHtml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'html'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.outerHtml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.outer_html" title="pyquery.pyquery.PyQuery.outer_html"><code class="xref py py-func docutils literal notranslate"><span class="pre">outer_html()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.outer_html">
+<span class="sig-name descname"><span class="pre">outer_html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'html'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.outer_html"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.outer_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the html representation of the first selected element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span class=&quot;red&quot;&gt;toto&lt;/span&gt; rocks&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">))</span>
+<span class="go">&lt;span class=&quot;red&quot;&gt;toto&lt;/span&gt; rocks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outer_html</span><span class="p">())</span>
+<span class="go">&lt;span class=&quot;red&quot;&gt;toto&lt;/span&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outerHtml</span><span class="p">())</span>
+<span class="go">&lt;span class=&quot;red&quot;&gt;toto&lt;/span&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;Only &lt;b&gt;me&lt;/b&gt; &amp; myself&lt;/p&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outer_html</span><span class="p">())</span>
+<span class="go">&lt;b&gt;me&lt;/b&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.parents">
+<span class="sig-name descname"><span class="pre">parents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.parents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.parents" title="Permalink to this definition">¶</a></dt>
+<dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;/span&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">()</span>
+<span class="go">[&lt;span&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span>
+<span class="go">[&lt;span&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.prepend">
+<span class="sig-name descname"><span class="pre">prepend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.prepend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.prepend" title="Permalink to this definition">¶</a></dt>
+<dd><p>prepend value to nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.prependTo">
+<span class="sig-name descname"><span class="pre">prependTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.prependTo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.prepend_to" title="pyquery.pyquery.PyQuery.prepend_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">prepend_to()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.prepend_to">
+<span class="sig-name descname"><span class="pre">prepend_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.prepend_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.prepend_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>prepend nodes to value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.prevAll">
+<span class="sig-name descname"><span class="pre">prevAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.prevAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.prev_all" title="pyquery.pyquery.PyQuery.prev_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">prev_all()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.prev_all">
+<span class="sig-name descname"><span class="pre">prev_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.prev_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.prev_all" title="Permalink to this definition">¶</a></dt>
+<dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;&lt;span&gt;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;img scr=&quot;&quot;/&gt;&lt;/span&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:last&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prev_all</span><span class="p">()</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:last&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">prevAll</span><span class="p">()</span>
+<span class="go">[&lt;p.hello&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr=&lt;NoDefault&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove nodes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span><span class="s1">&#39;&lt;div&gt;Maybe &lt;em&gt;she&lt;/em&gt; does &lt;strong&gt;NOT&lt;/strong&gt; know&lt;/div&gt;&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="go">[&lt;strong&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;div&gt;Maybe &lt;em&gt;she&lt;/em&gt; does   know&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.removeAttr">
+<span class="sig-name descname"><span class="pre">removeAttr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.removeAttr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.remove_attr" title="pyquery.pyquery.PyQuery.remove_attr"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove_attr()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.removeClass">
+<span class="sig-name descname"><span class="pre">removeClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.removeClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.remove_class" title="pyquery.pyquery.PyQuery.remove_class"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove_class()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.remove_attr">
+<span class="sig-name descname"><span class="pre">remove_attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.remove_attr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.remove_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an attribute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div id=&quot;myid&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">remove_attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">removeAttr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.remove_class">
+<span class="sig-name descname"><span class="pre">remove_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.remove_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.remove_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a css class to elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;myclass&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">remove_class</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">removeClass</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.remove_namespaces">
+<span class="sig-name descname"><span class="pre">remove_namespaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.remove_namespaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.remove_namespaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all namespaces:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;foo xmlns=&quot;http://example.com/foo&quot;&gt;&lt;/foo&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span>
+<span class="go">[&lt;{http://example.com/foo}foo&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span><span class="o">.</span><span class="n">remove_namespaces</span><span class="p">()</span>
+<span class="go">[&lt;foo&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.replaceAll">
+<span class="sig-name descname"><span class="pre">replaceAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.replaceAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.replace_all" title="pyquery.pyquery.PyQuery.replace_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">replace_all()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.replaceWith">
+<span class="sig-name descname"><span class="pre">replaceWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.replaceWith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.replace_with" title="pyquery.pyquery.PyQuery.replace_with"><code class="xref py py-func docutils literal notranslate"><span class="pre">replace_with()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.replace_all">
+<span class="sig-name descname"><span class="pre">replace_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.replace_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.replace_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace nodes by expr</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.replace_with">
+<span class="sig-name descname"><span class="pre">replace_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.replace_with"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.replace_with" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace nodes by value:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;div /&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">node</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s2">&quot;&lt;span /&gt;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child</span><span class="o">.</span><span class="n">replace_with</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="go">&lt;html&gt;&lt;span/&gt;&lt;/html&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.root">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">root</span></span><a class="headerlink" href="#pyquery.pyquery.PyQuery.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the xml root element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.serialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize form elements as a URL-encoded string.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span><span class="s1">&#39;&lt;form&gt;&lt;input name=&quot;order&quot; value=&quot;spam&quot;&gt;&#39;</span>
+<span class="gp">... </span><span class="s1">&#39;&lt;input name=&quot;order2&quot; value=&quot;baked beans&quot;&gt;&lt;/form&gt;&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+<span class="go">&#39;order=spam&amp;order2=baked%20beans&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serializeArray">
+<span class="sig-name descname"><span class="pre">serializeArray</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.serializeArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.serialize_array" title="pyquery.pyquery.PyQuery.serialize_array"><code class="xref py py-func docutils literal notranslate"><span class="pre">serialize_array()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serializeDict">
+<span class="sig-name descname"><span class="pre">serializeDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.serializeDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.serialize_dict" title="pyquery.pyquery.PyQuery.serialize_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">serialize_dict()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serializePairs">
+<span class="sig-name descname"><span class="pre">serializePairs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.serializePairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.serialize_pairs" title="pyquery.pyquery.PyQuery.serialize_pairs"><code class="xref py py-func docutils literal notranslate"><span class="pre">serialize_pairs()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serialize_array">
+<span class="sig-name descname"><span class="pre">serialize_array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.serialize_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.serialize_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize form elements as an array of dictionaries, whose structure
+mirrors that produced by the jQuery API. Notably, it does not handle
+the deprecated <cite>keygen</cite> form element.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;form&gt;&lt;input name=&quot;order&quot; value=&quot;spam&quot;&gt;&lt;/form&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serialize_array</span><span class="p">()</span> <span class="o">==</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;spam&#39;</span><span class="p">}]</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serializeArray</span><span class="p">()</span> <span class="o">==</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;spam&#39;</span><span class="p">}]</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serialize_dict">
+<span class="sig-name descname"><span class="pre">serialize_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.serialize_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.serialize_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize form elements as an ordered dictionary. Multiple values
+corresponding to the same input name are concatenated into one list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;form&gt;</span>
+<span class="gp">... </span><span class="s1">            &lt;input name=&quot;order&quot; value=&quot;spam&quot;&gt;</span>
+<span class="gp">... </span><span class="s1">            &lt;input name=&quot;order&quot; value=&quot;eggs&quot;&gt;</span>
+<span class="gp">... </span><span class="s1">            &lt;input name=&quot;order2&quot; value=&quot;ham&quot;&gt;</span>
+<span class="gp">... </span><span class="s1">            &lt;/form&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serialize_dict</span><span class="p">()</span>
+<span class="go">OrderedDict([(&#39;order&#39;, [&#39;spam&#39;, &#39;eggs&#39;]), (&#39;order2&#39;, &#39;ham&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serializeDict</span><span class="p">()</span>
+<span class="go">OrderedDict([(&#39;order&#39;, [&#39;spam&#39;, &#39;eggs&#39;]), (&#39;order2&#39;, &#39;ham&#39;)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.serialize_pairs">
+<span class="sig-name descname"><span class="pre">serialize_pairs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.serialize_pairs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.serialize_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize form elements as an array of 2-tuples conventional for
+typical URL-parsing operations in Python.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;form&gt;&lt;input name=&quot;order&quot; value=&quot;spam&quot;&gt;&lt;/form&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serialize_pairs</span><span class="p">()</span>
+<span class="go">[(&#39;order&#39;, &#39;spam&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">serializePairs</span><span class="p">()</span>
+<span class="go">[(&#39;order&#39;, &#39;spam&#39;)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add display:block to elements style:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div /&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">())</span>
+<span class="go">&lt;div style=&quot;display: block&quot;/&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.siblings">
+<span class="sig-name descname"><span class="pre">siblings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.siblings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.siblings" title="Permalink to this definition">¶</a></dt>
+<dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;&lt;span&gt;&lt;p class=&quot;hello&quot;&gt;Hi&lt;/p&gt;&lt;p&gt;Bye&lt;/p&gt;&lt;img scr=&quot;&quot;/&gt;&lt;/span&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">siblings</span><span class="p">()</span>
+<span class="go">[&lt;p&gt;, &lt;img&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.hello&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">siblings</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">)</span>
+<span class="go">[&lt;img&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value=&lt;NoDefault&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get or set the text representation of sub nodes.</p>
+<p>Get the text value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;toto&lt;/span&gt;&lt;span&gt;tata&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+<span class="go">tototata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;div&gt;&lt;span&gt;toto&lt;/span&gt;</span>
+<span class="gp">... </span><span class="s1">              &lt;span&gt;tata&lt;/span&gt;&lt;/div&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+<span class="go">toto tata</span>
+</pre></div>
+</div>
+<p>Get the text value, without squashing newlines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;div&gt;&lt;span&gt;toto&lt;/span&gt;</span>
+<span class="gp">... </span><span class="s1">              &lt;span&gt;tata&lt;/span&gt;&lt;/div&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">squash_space</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="go">toto</span>
+<span class="go">tata</span>
+</pre></div>
+</div>
+<p>Set the text value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;Youhou !&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="go">&lt;div&gt;Youhou !&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.toggleClass">
+<span class="sig-name descname"><span class="pre">toggleClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.toggleClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.toggle_class" title="pyquery.pyquery.PyQuery.toggle_class"><code class="xref py py-func docutils literal notranslate"><span class="pre">toggle_class()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.toggle_class">
+<span class="sig-name descname"><span class="pre">toggle_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.toggle_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.toggle_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle a css class to elements</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">toggle_class</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.myclass&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">toggleClass</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.val">
+<span class="sig-name descname"><span class="pre">val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value=&lt;NoDefault&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.val"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.val" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the attribute value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;input /&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="s1">&#39;Youhou&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+<p>Get the attribute value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">val</span><span class="p">()</span>
+<span class="go">&#39;Youhou&#39;</span>
+</pre></div>
+</div>
+<p>Set the selected values for a <cite>select</cite> element with the <cite>multiple</cite>
+attribute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="gp">... </span><span class="s1">            &lt;select multiple&gt;</span>
+<span class="gp">... </span><span class="s1">                &lt;option value=&quot;you&quot;&gt;&lt;option value=&quot;hou&quot;&gt;</span>
+<span class="gp">... </span><span class="s1">            &lt;/select&gt;</span>
+<span class="gp">... </span><span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">val</span><span class="p">([</span><span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="s1">&#39;hou&#39;</span><span class="p">])</span>
+<span class="go">[&lt;select&gt;]</span>
+</pre></div>
+</div>
+<p>Get the selected values for a <cite>select</cite> element with the <cite>multiple</cite>
+attribute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">val</span><span class="p">()</span>
+<span class="go">[&#39;you&#39;, &#39;hou&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.width">
+<span class="sig-name descname"><span class="pre">width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value=&lt;NoDefault&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>set/get width of element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.wrap">
+<span class="sig-name descname"><span class="pre">wrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.wrap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.wrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string of HTML that will be created on the fly and wrapped around
+each target:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;span&gt;youhou&lt;/span&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;div&gt;&lt;span&gt;youhou&lt;/span&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.wrapAll">
+<span class="sig-name descname"><span class="pre">wrapAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyquery.pyquery.PyQuery.wrapAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#pyquery.pyquery.PyQuery.wrap_all" title="pyquery.pyquery.PyQuery.wrap_all"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_all()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.wrap_all">
+<span class="sig-name descname"><span class="pre">wrap_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.wrap_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.wrap_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap all the elements in the matched set into a single wrapper
+element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;Hey&lt;/span&gt;&lt;span&gt;you !&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">wrap_all</span><span class="p">(</span><span class="s1">&#39;&lt;div id=&quot;wrapper&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">))</span>
+<span class="go">&lt;div id=&quot;wrapper&quot;&gt;&lt;span&gt;Hey&lt;/span&gt;&lt;span&gt;you !&lt;/span&gt;&lt;/div&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;span&gt;Hey&lt;/span&gt;&lt;span&gt;you !&lt;/span&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">wrapAll</span><span class="p">(</span><span class="s1">&#39;&lt;div id=&quot;wrapper&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">))</span>
+<span class="go">&lt;div id=&quot;wrapper&quot;&gt;&lt;span&gt;Hey&lt;/span&gt;&lt;span&gt;you !&lt;/span&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyquery.pyquery.PyQuery.xhtml_to_html">
+<span class="sig-name descname"><span class="pre">xhtml_to_html</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyquery/pyquery.html#PyQuery.xhtml_to_html"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyquery.pyquery.PyQuery.xhtml_to_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove xhtml namespace:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s1">&#39;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span>
+<span class="go">[&lt;{http://www.w3.org/1999/xhtml}html&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span><span class="o">.</span><span class="n">xhtml_to_html</span><span class="p">()</span>
+<span class="go">[&lt;html&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="traversing.html"
+                        title="previous chapter">Traversing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scrap.html"
+                        title="next chapter">Scraping</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scrap.html" title="Scraping"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="traversing.html" title="Traversing"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquery</span></code> – PyQuery complete API</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

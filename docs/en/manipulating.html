@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Manipulating &#8212; pyquery 1.4.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Traversing" href="traversing.html" />
+    <link rel="prev" title="Using pseudo classes" href="pseudo_classes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="traversing.html" title="Traversing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pseudo_classes.html" title="Using pseudo classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manipulating</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="manipulating">
+<h1>Manipulating<a class="headerlink" href="#manipulating" title="Permalink to this headline">¶</a></h1>
+<p>You can also add content to the end of tags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;you know Python rocks&lt;/p&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;&lt;span&gt;reddit&lt;/span&gt;&lt;/a&gt;&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;you know Python rocks check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;&lt;span&gt;reddit&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>Or to the beginning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">prepend</span><span class="p">(</span><span class="s1">&#39;check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;reddit&lt;/a&gt;&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;reddit&lt;/a&gt;you know ...</span>
+</pre></div>
+</div>
+<p>Prepend or append an element into an other:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;div id=&quot;test&quot;&gt;&lt;a href=&quot;http://python.org&quot;&gt;python&lt;/a&gt; !&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">prependTo</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;#test&#39;</span><span class="p">))</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;#test&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">&lt;p class=&quot;hello&quot; ...</span>
+</pre></div>
+</div>
+<p>Insert an element after another:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">insertAfter</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;#test&#39;</span><span class="p">))</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;#test&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">&lt;a href=&quot;http://python.org&quot;&gt;python&lt;/a&gt; !</span>
+</pre></div>
+</div>
+<p>Or before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">insertBefore</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;#test&#39;</span><span class="p">))</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;...</span>
+</pre></div>
+</div>
+<p>Doing something for each elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">each</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">pq</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">addClass</span><span class="p">(</span><span class="s1">&#39;hello2&#39;</span><span class="p">))</span>
+<span class="go">[&lt;p#hello.hello.hello2&gt;]</span>
+</pre></div>
+</div>
+<p>Remove an element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p id=&quot;id&quot;&gt;Yeah!&lt;/p&gt;&lt;p&gt;python rocks !&lt;/p&gt;&lt;/div&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;p#id&#39;</span><span class="p">)</span>
+<span class="go">[&lt;html&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p#id&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>Remove what’s inside the selection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+<span class="go">[&lt;p&gt;]</span>
+</pre></div>
+</div>
+<p>And you can get back the modified html:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&lt;html&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>You can generate html stuff:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span> <span class="k">as</span> <span class="n">pq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Yeah !&lt;/div&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addClass</span><span class="p">(</span><span class="s1">&#39;myclass&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;b&gt;cool&lt;/b&gt;&#39;</span><span class="p">))</span>
+<span class="go">&lt;div class=&quot;myclass&quot;&gt;Yeah !&lt;/div&gt;&lt;b&gt;cool&lt;/b&gt;</span>
+</pre></div>
+</div>
+<p>Remove all namespaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s1">&#39;&lt;foo xmlns=&quot;http://example.com/foo&quot;&gt;&lt;/foo&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">[&lt;{http://example.com/foo}foo&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">remove_namespaces</span><span class="p">()</span>
+<span class="go">[&lt;foo&gt;]</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pseudo_classes.html"
+                        title="previous chapter">Using pseudo classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="traversing.html"
+                        title="next chapter">Traversing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/manipulating.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="traversing.html" title="Traversing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pseudo_classes.html" title="Using pseudo classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Manipulating</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

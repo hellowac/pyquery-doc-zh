@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using pseudo classes &#8212; pyquery 1.4.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manipulating" href="manipulating.html" />
+    <link rel="prev" title="CSS" href="css.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manipulating.html" title="Manipulating"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="css.html" title="CSS"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using pseudo classes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="using-pseudo-classes">
+<h1>Using pseudo classes<a class="headerlink" href="#using-pseudo-classes" title="Permalink to this headline">¶</a></h1>
+<section id="button">
+<h2>:button<a class="headerlink" href="#button" title="Permalink to this headline">¶</a></h2>
+<p>Matches all button input elements and the button element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">((</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;button&quot;/&gt;&#39;</span>
+<span class="gp">... </span>         <span class="s1">&#39;&lt;button&gt;&lt;/button&gt;&lt;/div&gt;&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;:button&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;, &lt;button&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="checkbox">
+<h2>:checkbox<a class="headerlink" href="#checkbox" title="Permalink to this headline">¶</a></h2>
+<p>Matches all checkbox input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;checkbox&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:checkbox&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="checked">
+<h2>:checked<a class="headerlink" href="#checked" title="Permalink to this headline">¶</a></h2>
+<p>Matches odd elements, zero-indexed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input checked=&quot;checked&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:checked&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="child">
+<h2>:child<a class="headerlink" href="#child" title="Permalink to this headline">¶</a></h2>
+<p>right is an immediate child of left</p>
+</section>
+<section id="contains">
+<h2>:contains()<a class="headerlink" href="#contains" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements that contain the given text</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1/&gt;&lt;h1 class=&quot;title&quot;&gt;title&lt;/h1&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:contains(&quot;title&quot;)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1.title&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="descendant">
+<h2>:descendant<a class="headerlink" href="#descendant" title="Permalink to this headline">¶</a></h2>
+<p>right is a child, grand-child or further descendant of left</p>
+</section>
+<section id="disabled">
+<h2>:disabled<a class="headerlink" href="#disabled" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements that are disabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input disabled=&quot;disabled&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:disabled&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="empty">
+<h2>:empty<a class="headerlink" href="#empty" title="Permalink to this headline">¶</a></h2>
+<p>Match all elements that do not contain other elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1&gt;&lt;span&gt;title&lt;/span&gt;&lt;/h1&gt;&lt;h2/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;:empty&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h2&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="enabled">
+<h2>:enabled<a class="headerlink" href="#enabled" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements that are enabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input value=&quot;foo&quot; /&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:enabled&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="eq">
+<h2>:eq()<a class="headerlink" href="#eq" title="Permalink to this headline">¶</a></h2>
+<p>Matches a single element by its index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1 class=&quot;first&quot;/&gt;&lt;h1 class=&quot;last&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:eq(0)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1.first&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:eq(1)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1.last&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="even">
+<h2>:even<a class="headerlink" href="#even" title="Permalink to this headline">¶</a></h2>
+<p>Matches even elements, zero-indexed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p class=&quot;last&quot;&gt;&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:even&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="file">
+<h2>:file<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h2>
+<p>Matches all input elements of type file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;file&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:file&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="first">
+<h2>:first<a class="headerlink" href="#first" title="Permalink to this headline">¶</a></h2>
+<p>Matches the first selected element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;p class=&quot;first&quot;&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:first&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.first&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="gt">
+<h2>:gt()<a class="headerlink" href="#gt" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements with an index over the given one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1 class=&quot;first&quot;/&gt;&lt;h1 class=&quot;last&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:gt(0)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1.last&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="has">
+<h2>:has()<a class="headerlink" href="#has" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>Matches elements which contain at least one element that matches</dt><dd><p>the specified selector. <a class="reference external" href="https://api.jquery.com/has-selector/">https://api.jquery.com/has-selector/</a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;foo&quot;&gt;&lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.foo:has(&quot;.baz&quot;)&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.foo:has(&quot;.foo&quot;)&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.foo:has(&quot;.bar&quot;)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.foo&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;.foo:has(div)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;div.foo&gt;]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="header">
+<h2>:header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h2>
+<p>Matches all header elelements (h1, …, h6):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1&gt;title&lt;/h1&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;:header&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="hidden">
+<h2>:hidden<a class="headerlink" href="#hidden" title="Permalink to this headline">¶</a></h2>
+<p>Matches all hidden input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;hidden&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:hidden&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="image">
+<h2>:image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
+<p>Matches all image input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;image&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:image&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="input">
+<h2>:input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h2>
+<p>Matches all input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">((</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;file&quot;/&gt;&#39;</span>
+<span class="gp">... </span>         <span class="s1">&#39;&lt;textarea&gt;&lt;/textarea&gt;&lt;/div&gt;&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;:input&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;, &lt;textarea&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="last">
+<h2>:last<a class="headerlink" href="#last" title="Permalink to this headline">¶</a></h2>
+<p>Matches the last selected element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p class=&quot;last&quot;&gt;&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:last&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.last&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="lt">
+<h2>:lt()<a class="headerlink" href="#lt" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements with an index below the given one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1 class=&quot;first&quot;/&gt;&lt;h1 class=&quot;last&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:lt(1)&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1.first&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="odd">
+<h2>:odd<a class="headerlink" href="#odd" title="Permalink to this headline">¶</a></h2>
+<p>Matches odd elements, zero-indexed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p class=&quot;last&quot;&gt;&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:odd&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p.last&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="parent">
+<h2>:parent<a class="headerlink" href="#parent" title="Permalink to this headline">¶</a></h2>
+<p>Match all elements that contain other elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;h1&gt;&lt;span&gt;title&lt;/span&gt;&lt;/h1&gt;&lt;h1/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;h1:parent&#39;</span><span class="p">)</span>
+<span class="go">[&lt;h1&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="password">
+<h2>:password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h2>
+<p>Matches all password input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;password&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:password&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="pseudo">
+<h2>:pseudo<a class="headerlink" href="#pseudo" title="Permalink to this headline">¶</a></h2>
+<p>Translate a pseudo-element.</p>
+<blockquote>
+<div><p>Defaults to not supporting pseudo-elements at all,
+but can be overridden by sub-classes</p>
+</div></blockquote>
+</section>
+<section id="radio">
+<h2>:radio<a class="headerlink" href="#radio" title="Permalink to this headline">¶</a></h2>
+<p>Matches all radio input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;radio&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:radio&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="reset">
+<h2>:reset<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
+<p>Matches all reset input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;reset&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:reset&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="selected">
+<h2>:selected<a class="headerlink" href="#selected" title="Permalink to this headline">¶</a></h2>
+<p>Matches all elements that are selected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;select&gt;&lt;option selected=&quot;selected&quot;/&gt;&lt;/select&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;option:selected&#39;</span><span class="p">)</span>
+<span class="go">[&lt;option&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="submit">
+<h2>:submit<a class="headerlink" href="#submit" title="Permalink to this headline">¶</a></h2>
+<p>Matches all submit input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;submit&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:submit&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="text">
+<h2>:text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
+<p>Matches all text input elements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">PyQuery</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&lt;input type=&quot;text&quot;/&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;input:text&#39;</span><span class="p">)</span>
+<span class="go">[&lt;input&gt;]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using pseudo classes</a><ul>
+<li><a class="reference internal" href="#button">:button</a></li>
+<li><a class="reference internal" href="#checkbox">:checkbox</a></li>
+<li><a class="reference internal" href="#checked">:checked</a></li>
+<li><a class="reference internal" href="#child">:child</a></li>
+<li><a class="reference internal" href="#contains">:contains()</a></li>
+<li><a class="reference internal" href="#descendant">:descendant</a></li>
+<li><a class="reference internal" href="#disabled">:disabled</a></li>
+<li><a class="reference internal" href="#empty">:empty</a></li>
+<li><a class="reference internal" href="#enabled">:enabled</a></li>
+<li><a class="reference internal" href="#eq">:eq()</a></li>
+<li><a class="reference internal" href="#even">:even</a></li>
+<li><a class="reference internal" href="#file">:file</a></li>
+<li><a class="reference internal" href="#first">:first</a></li>
+<li><a class="reference internal" href="#gt">:gt()</a></li>
+<li><a class="reference internal" href="#has">:has()</a></li>
+<li><a class="reference internal" href="#header">:header</a></li>
+<li><a class="reference internal" href="#hidden">:hidden</a></li>
+<li><a class="reference internal" href="#image">:image</a></li>
+<li><a class="reference internal" href="#input">:input</a></li>
+<li><a class="reference internal" href="#last">:last</a></li>
+<li><a class="reference internal" href="#lt">:lt()</a></li>
+<li><a class="reference internal" href="#odd">:odd</a></li>
+<li><a class="reference internal" href="#parent">:parent</a></li>
+<li><a class="reference internal" href="#password">:password</a></li>
+<li><a class="reference internal" href="#pseudo">:pseudo</a></li>
+<li><a class="reference internal" href="#radio">:radio</a></li>
+<li><a class="reference internal" href="#reset">:reset</a></li>
+<li><a class="reference internal" href="#selected">:selected</a></li>
+<li><a class="reference internal" href="#submit">:submit</a></li>
+<li><a class="reference internal" href="#text">:text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="css.html"
+                        title="previous chapter">CSS</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manipulating.html"
+                        title="next chapter">Manipulating</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pseudo_classes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manipulating.html" title="Manipulating"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="css.html" title="CSS"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using pseudo classes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

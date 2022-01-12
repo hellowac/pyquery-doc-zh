@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>pyquery 中文文档</title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="zh/index.html"><strong aria-hidden="true">1.</strong> 首页</a></li><li class="chapter-item expanded affix "><a href="en/index.html">原文</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">pyquery 中文文档</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="pyquery文档"><a class="header" href="#pyquery文档">PyQuery文档</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<pre><code>&lt;title&gt;pyquery: a jquery-like library for python &amp;#8212; pyquery 1.4.3 documentation&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/pygments.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;_static/nature.css&quot; /&gt;
+&lt;script data-url_root=&quot;./&quot; id=&quot;documentation_options&quot; src=&quot;_static/documentation_options.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;_static/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;_static/underscore.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;_static/doctools.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;index&quot; title=&quot;Index&quot; href=&quot;genindex.html&quot; /&gt;
+&lt;link rel=&quot;search&quot; title=&quot;Search&quot; href=&quot;search.html&quot; /&gt;
+&lt;link rel=&quot;next&quot; title=&quot;Attributes&quot; href=&quot;attributes.html&quot; /&gt; 
+</code></pre>
+</head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3 id="navigation"><a class="header" href="#navigation">Navigation</a></h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="en/genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="en/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="en/attributes.html" title="Attributes"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="en/index.html#">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pyquery: a jquery-like library for python</a></li> 
+      </ul>
+    </div>  
+<pre><code>&lt;div class=&quot;document&quot;&gt;
+  &lt;div class=&quot;documentwrapper&quot;&gt;
+    &lt;div class=&quot;bodywrapper&quot;&gt;
+      &lt;div class=&quot;body&quot; role=&quot;main&quot;&gt;
+</code></pre>
+<section id="pyquery-a-jquery-like-library-for-python">
+<h1 id="pyquery-a-jquery-like-library-for-pythona-classheaderlink-hrefenindexhtmlpyquery-a-jquery-like-library-for-python-titlepermalink-to-this-headlinea"><a class="header" href="#pyquery-a-jquery-like-library-for-pythona-classheaderlink-hrefenindexhtmlpyquery-a-jquery-like-library-for-python-titlepermalink-to-this-headlinea">pyquery: a jquery-like library for python<a class="headerlink" href="en/index.html#pyquery-a-jquery-like-library-for-python" title="Permalink to this headline">¶</a></a></h1>
+<a class="reference external image-reference" href="https://travis-ci.org/gawel/pyquery"><img alt="Build Status" src="https://travis-ci.org/gawel/pyquery.svg" /></a>
+<p>pyquery allows you to make jquery queries on xml documents.
+The API is as much as possible the similar to jquery. pyquery uses lxml for fast
+xml and html manipulation.</p>
+<p>This is not (or at least not yet) a library to produce or interact with
+javascript code. I just liked the jquery API and I missed it in python so I
+told myself “Hey let’s make jquery in python”. This is the result.</p>
+<p>The <a class="reference external" href="https://github.com/gawel/pyquery/">project</a> is being actively developped on a git repository on Github. I
+have the policy of giving push access to anyone who wants it and then to review
+what they do. So if you want to contribute just email me.</p>
+<p>Please report bugs on the <a class="reference external" href="https://github.com/gawel/pyquery/issues">github</a> issue
+tracker.</p>
+<p>I’ve spent hours maintaining this software, with love.
+Please consider tiping if you like it:</p>
+<p>BTC: 1PruQAwByDndFZ7vTeJhyWefAghaZx9RZg</p>
+<p>ETH: 0xb6418036d8E06c60C4D91c17d72Df6e1e5b15CE6</p>
+<p>LTC: LY6CdZcDbxnBX9GFBJ45TqVj8NykBBqsmT</p>
+</section>
+<section id="quickstart">
+<h1 id="quickstarta-classheaderlink-hrefenindexhtmlquickstart-titlepermalink-to-this-headlinea"><a class="header" href="#quickstarta-classheaderlink-hrefenindexhtmlquickstart-titlepermalink-to-this-headlinea">Quickstart<a class="headerlink" href="en/index.html#quickstart" title="Permalink to this headline">¶</a></a></h1>
+<p>You can use the PyQuery class to load an xml document from a string, a lxml
+document, from a file or from an url:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span> <span class="k">as</span> <span class="n">pq</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">etree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">your_url</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">your_url</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">opener</span><span class="o">=</span><span class="k">lambda</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">:</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">path_to_html_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now d is like the $ in jquery:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;#hello&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">d</span><span class="p">(</span><span class="s2">&quot;#hello&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">Hello world !</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="s2">&quot;you know &lt;a href=&#39;http://python.org/&#39;&gt;Python&lt;/a&gt; rocks&quot;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">html</span><span class="p">())</span>
+<span class="go">you know &lt;a href=&quot;http://python.org/&quot;&gt;Python&lt;/a&gt; rocks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+<span class="go">you know Python rocks</span>
+</pre></div>
+</div>
+<p>You can use some of the pseudo classes that are available in jQuery but that
+are not standard in css such as :first :last :even :odd :eq :lt :gt :checked
+:selected :file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">(</span><span class="s1">&#39;p:first&#39;</span><span class="p">)</span>
+<span class="go">[&lt;p#hello.hello&gt;]</span>
+</pre></div>
+</div>
+</section>
+<section id="full-documentation">
+<h1 id="full-documentationa-classheaderlink-hrefenindexhtmlfull-documentation-titlepermalink-to-this-headlinea"><a class="header" href="#full-documentationa-classheaderlink-hrefenindexhtmlfull-documentation-titlepermalink-to-this-headlinea">Full documentation<a class="headerlink" href="en/index.html#full-documentation" title="Permalink to this headline">¶</a></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="en/attributes.html">Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/pseudo_classes.html">Using pseudo classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/manipulating.html">Manipulating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/traversing.html">Traversing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/api.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyquery</span></code> – PyQuery complete API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/scrap.html">Scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/tips.html">Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/future.html">Future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="en/changes.html">News</a></li>
+</ul>
+</div>
+</section>
+<section id="more-documentation">
+<h1 id="more-documentationa-classheaderlink-hrefenindexhtmlmore-documentation-titlepermalink-to-this-headlinea"><a class="header" href="#more-documentationa-classheaderlink-hrefenindexhtmlmore-documentation-titlepermalink-to-this-headlinea">More documentation<a class="headerlink" href="en/index.html#more-documentation" title="Permalink to this headline">¶</a></a></h1>
+<p>First there is the Sphinx documentation <a class="reference external" href="http://pyquery.rtfd.org/">here</a>.
+Then for more documentation about the API you can use the <a class="reference external" href="http://docs.jquery.com/">jquery website</a>.
+The reference I’m now using for the API is … the <a class="reference external" href="http://colorcharge.com/wp-content/uploads/2007/12/jquery12_colorcharge.png">color cheat sheet</a>.
+Then you can always look at the <a class="reference external" href="https://github.com/gawel/pyquery">code</a>.</p>
+</section>
+<section id="indices-and-tables">
+<h1 id="indices-and-tablesa-classheaderlink-hrefenindexhtmlindices-and-tables-titlepermalink-to-this-headlinea"><a class="header" href="#indices-and-tablesa-classheaderlink-hrefenindexhtmlindices-and-tables-titlepermalink-to-this-headlinea">Indices and tables<a class="headerlink" href="en/index.html#indices-and-tables" title="Permalink to this headline">¶</a></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="en/genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="en/py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="en/search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+<pre><code>        &lt;div class=&quot;clearer&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;sphinxsidebar&quot; role=&quot;navigation&quot; aria-label=&quot;main navigation&quot;&gt;
+    &lt;div class=&quot;sphinxsidebarwrapper&quot;&gt;
+</code></pre>
+<h3 id="a-hrefenindexhtmltable-of-contentsa"><a class="header" href="#a-hrefenindexhtmltable-of-contentsa"><a href="en/index.html#">Table of Contents</a></a></h3>
+  <ul>
+<li><a class="reference internal" href="en/index.html#">pyquery: a jquery-like library for python</a></li>
+<li><a class="reference internal" href="en/index.html#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="en/index.html#full-documentation">Full documentation</a></li>
+<li><a class="reference internal" href="en/index.html#more-documentation">More documentation</a></li>
+<li><a class="reference internal" href="en/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+<h4 id="next-topic"><a class="header" href="#next-topic">Next topic</a></h4>
+  <p class="topless"><a href="en/attributes.html"
+                        title="next chapter">Attributes</a></p>
+  <div role="note" aria-label="source link">
+    <h3 id="this-page"><a class="header" href="#this-page">This Page</a></h3>
+    <ul class="this-page-menu">
+      <li><a href="en/_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3 id="navigation-1"><a class="header" href="#navigation-1">Navigation</a></h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="en/genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="en/py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="en/attributes.html" title="Attributes"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="en/index.html#">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pyquery: a jquery-like library for python</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
