@@ -1,7 +1,6 @@
 # Summary
 
-# 基于原版本1.4.3翻译
-
+- [指南](./index.md)
 - [简介](./zh/index.md)
 - [快速开始](./zh/01_quick_start.md)
 - [属性](./zh/02_attributes.md)
