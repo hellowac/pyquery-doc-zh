@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>News &#8212; pyquery 1.4.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Future" href="future.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="future.html" title="Future"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">News</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="news">
+<h1>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h1>
+<section id="id1">
+<h2>1.4.3 (2020-11-21)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>No longer use a universal wheel</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>1.4.2 (2020-11-21)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fix exception raised when calling <cite>PyQuery(“&lt;textarea&gt;&lt;/textarea&gt;”).text()</cite></p></li>
+<li><p>python2 is no longer supported</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>1.4.1 (2019-10-26)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This is the latest release with py2 support</p></li>
+<li><p>Remove py33, py34 support</p></li>
+<li><p>web scraping improvements: default timeout and session support</p></li>
+<li><p>Add API methods to serialize form-related elements according to spec</p></li>
+<li><p>Include HTML markup when querying textarea text/value</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>1.4.0 (2018-01-11)<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refactoring of <cite>.text()</cite> to match firefox behavior.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>1.3.0 (2017-10-21)<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Remove some unmaintained modules: <code class="docutils literal notranslate"><span class="pre">pyquery.ajax</span></code> and <code class="docutils literal notranslate"><span class="pre">pyquery.rules</span></code></p></li>
+<li><p>Code cleanup. No longer use ugly hacks required by python2.6/python3.2.</p></li>
+<li><p>Run tests with python3.6 on CI</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">method</span></code> argument to <code class="docutils literal notranslate"><span class="pre">.outer_html()</span></code></p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>1.2.17 (2016-10-14)<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyQuery('&lt;input</span> <span class="pre">value=&quot;&quot;&gt;').val()</span></code> is <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PyQuery('&lt;input&gt;').val()</span></code> is <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>1.2.16 (2016-10-14)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.attr('value',</span> <span class="pre">'')</span></code> no longer removes the <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;checkbox&quot;&gt;</span></code> without <code class="docutils literal notranslate"><span class="pre">value=&quot;...&quot;</span></code> have a <code class="docutils literal notranslate"><span class="pre">.val()</span></code> of
+<code class="docutils literal notranslate"><span class="pre">'on'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;radio&quot;&gt;</span></code> without <code class="docutils literal notranslate"><span class="pre">value=&quot;...&quot;</span></code> have a <code class="docutils literal notranslate"><span class="pre">.val()</span></code> of
+<code class="docutils literal notranslate"><span class="pre">'on'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;select&gt;</span></code> without <code class="docutils literal notranslate"><span class="pre">&lt;option</span> <span class="pre">selected&gt;</span></code> have the value of their first
+<code class="docutils literal notranslate"><span class="pre">&lt;option&gt;</span></code> (or <code class="docutils literal notranslate"><span class="pre">None</span></code> if there are no options)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>1.2.15 (2016-10-11)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>.val() should never raise</p></li>
+<li><p>drop py26 support</p></li>
+<li><p>improve .extend() by returning self</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>1.2.14 (2016-10-10)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fix val() for &lt;textarea&gt; and &lt;select&gt;, to match jQuery behavior</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>1.2.13 (2016-04-12)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Note explicit support for Python 3.5</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>1.2.12 (2016-04-12)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>make_links_absolute now take care of whitespaces</p></li>
+<li><p>added pseudo selector :has()</p></li>
+<li><p>add cookies arguments as allowed arguments for requests</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>1.2.11 (2016-02-02)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Preserve namespaces attribute on PyQuery copies.</p></li>
+<li><p>Do not raise an error when the http response code is 2XX</p></li>
+</ul>
+</section>
+<section id="id13">
+<h2>1.2.10 (2016-01-05)<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed #118: implemented usage <code class="docutils literal notranslate"><span class="pre">lxml.etree.tostring</span></code> within <code class="docutils literal notranslate"><span class="pre">outer_html</span></code> method</p></li>
+<li><p>Fixed #117: Raise HTTP Error if HTTP status code is not equal to 200</p></li>
+<li><p>Fixed #112: make_links_absolute does not apply to form actions</p></li>
+<li><p>Fixed #98: contains act like jQuery</p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>1.2.9 (2014-08-22)<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Support for keyword arguments in PyQuery custom functions</p></li>
+<li><p>Fixed #78: items must take care or the parent</p></li>
+<li><p>Fixed #65 PyQuery.make_links_absolute() no longer creates ‘href’ attribute
+when it isn’t there</p></li>
+<li><p>Fixed #19. <code class="docutils literal notranslate"><span class="pre">is_()</span></code> was broken.</p></li>
+<li><p>Fixed #9. <code class="docutils literal notranslate"><span class="pre">.replaceWith(PyQuery</span> <span class="pre">element)</span></code> raises error</p></li>
+<li><p>Remove official python3.2 support (mostly because of 3rd party semi-deps)</p></li>
+</ul>
+</section>
+<section id="id15">
+<h2>1.2.8 (2013-12-21)<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed #22: Open by filename fails when file contains invalid xml</p></li>
+<li><p>Bug fix in .remove_class()</p></li>
+</ul>
+</section>
+<section id="id16">
+<h2>1.2.7 (2013-12-21)<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Use pep8 name for methods but keep an alias for camel case method.
+Eg: remove_attr and removeAttr works
+Fix #57</p></li>
+<li><p>.text() now return an empty string instead of None if there is no text node.
+Fix #45</p></li>
+<li><p>Fixed #23: removeClass adds class attribute to elements which previously
+lacked one</p></li>
+</ul>
+</section>
+<section id="id17">
+<h2>1.2.6 (2013-10-11)<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>README_fixt.py was not include in the release. Fix #54.</p></li>
+</ul>
+</section>
+<section id="id18">
+<h2>1.2.5 (2013-10-10)<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>cssselect compat. See <a class="reference external" href="https://github.com/SimonSapin/cssselect/pull/22">https://github.com/SimonSapin/cssselect/pull/22</a></p></li>
+<li><p>tests improvments. no longer require a eth connection.</p></li>
+<li><p>fix #55</p></li>
+</ul>
+</section>
+<section id="id19">
+<h2>1.2.4<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Moved to github. So a few files are renamed from .txt to .rst</p></li>
+<li><p>Added .xhtml_to_html() and .remove_namespaces()</p></li>
+<li><p>Use requests to fetch urls (if available)</p></li>
+<li><p>Use restkit’s proxy instead of Paste (which will die with py3)</p></li>
+<li><p>Allow to open https urls</p></li>
+<li><p>python2.5 is no longer supported (may work, but tests are broken)</p></li>
+</ul>
+</section>
+<section id="id20">
+<h2>1.2.3<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Allow to pass this in .filter() callback</p></li>
+<li><p>Add .contents() .items()</p></li>
+<li><p>Add tox.ini</p></li>
+<li><p>Bug fixes: fix #35 #55 #64 #66</p></li>
+</ul>
+</section>
+<section id="id21">
+<h2>1.2.2<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fix cssselectpatch to match the newer implementation of cssselect. Fixes issue #62, #52 and #59 (Haoyu Bai)</p></li>
+<li><p>Fix issue #37 (Caleb Burns)</p></li>
+</ul>
+</section>
+<section id="id22">
+<h2>1.2.1<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Allow to use a custom css translator.</p></li>
+<li><p>Fix issue 44: case problem with xml documents</p></li>
+</ul>
+</section>
+<section id="id23">
+<h2>1.2<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>PyQuery now uses <a class="reference external" href="http://pypi.python.org/pypi/cssselect">cssselect</a>. See issue 43.</p></li>
+<li><p>Fix issue 40: forward .html() extra arguments to <code class="docutils literal notranslate"><span class="pre">lxml.etree.tostring</span></code></p></li>
+</ul>
+</section>
+<section id="id24">
+<h2>1.1.1<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Minor release. Include test file so you can run tests from the tarball.</p></li>
+</ul>
+</section>
+<section id="id25">
+<h2>1.1<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fix issues 30, 31, 32 - py3 improvements / webob 1.2+ support</p></li>
+</ul>
+</section>
+<section id="id26">
+<h2>1.0<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fix issues 24</p></li>
+</ul>
+</section>
+<section id="id27">
+<h2>0.7<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Python 3 compatible</p></li>
+<li><p>Add __unicode__ method</p></li>
+<li><p>Add root and encoding attribute</p></li>
+<li><p>fix issues 19, 20, 22, 23</p></li>
+</ul>
+</section>
+<section id="id28">
+<h2>0.6.1<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Move README.txt at package root</p></li>
+<li><p>Add CHANGES.txt and add it to long_description</p></li>
+</ul>
+</section>
+<section id="id29">
+<h2>0.6<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Added PyQuery.outerHtml</p></li>
+<li><p>Added PyQuery.fn</p></li>
+<li><p>Added PyQuery.map</p></li>
+<li><p>Change PyQuery.each behavior to reflect jQuery api</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">News</a><ul>
+<li><a class="reference internal" href="#id1">1.4.3 (2020-11-21)</a></li>
+<li><a class="reference internal" href="#id2">1.4.2 (2020-11-21)</a></li>
+<li><a class="reference internal" href="#id3">1.4.1 (2019-10-26)</a></li>
+<li><a class="reference internal" href="#id4">1.4.0 (2018-01-11)</a></li>
+<li><a class="reference internal" href="#id5">1.3.0 (2017-10-21)</a></li>
+<li><a class="reference internal" href="#id6">1.2.17 (2016-10-14)</a></li>
+<li><a class="reference internal" href="#id7">1.2.16 (2016-10-14)</a></li>
+<li><a class="reference internal" href="#id8">1.2.15 (2016-10-11)</a></li>
+<li><a class="reference internal" href="#id9">1.2.14 (2016-10-10)</a></li>
+<li><a class="reference internal" href="#id10">1.2.13 (2016-04-12)</a></li>
+<li><a class="reference internal" href="#id11">1.2.12 (2016-04-12)</a></li>
+<li><a class="reference internal" href="#id12">1.2.11 (2016-02-02)</a></li>
+<li><a class="reference internal" href="#id13">1.2.10 (2016-01-05)</a></li>
+<li><a class="reference internal" href="#id14">1.2.9 (2014-08-22)</a></li>
+<li><a class="reference internal" href="#id15">1.2.8 (2013-12-21)</a></li>
+<li><a class="reference internal" href="#id16">1.2.7 (2013-12-21)</a></li>
+<li><a class="reference internal" href="#id17">1.2.6 (2013-10-11)</a></li>
+<li><a class="reference internal" href="#id18">1.2.5 (2013-10-10)</a></li>
+<li><a class="reference internal" href="#id19">1.2.4</a></li>
+<li><a class="reference internal" href="#id20">1.2.3</a></li>
+<li><a class="reference internal" href="#id21">1.2.2</a></li>
+<li><a class="reference internal" href="#id22">1.2.1</a></li>
+<li><a class="reference internal" href="#id23">1.2</a></li>
+<li><a class="reference internal" href="#id24">1.1.1</a></li>
+<li><a class="reference internal" href="#id25">1.1</a></li>
+<li><a class="reference internal" href="#id26">1.0</a></li>
+<li><a class="reference internal" href="#id27">0.7</a></li>
+<li><a class="reference internal" href="#id28">0.6.1</a></li>
+<li><a class="reference internal" href="#id29">0.6</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="future.html"
+                        title="previous chapter">Future</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/changes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="future.html" title="Future"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyquery 1.4.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">News</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012-2017, Olivier Lauzanne.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>
