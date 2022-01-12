@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>简介 - pyquery 中文文档</title>
+        <title>控制内容 - pyquery 中文文档</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">基于原版本1.4.3翻译</li><li class="chapter-item expanded "><a href="../zh/index.html" class="active"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../zh/01_quick_start.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="../zh/02_attributes.html"><strong aria-hidden="true">3.</strong> 属性</a></li><li class="chapter-item expanded "><a href="../zh/03_css.html"><strong aria-hidden="true">4.</strong> css</a></li><li class="chapter-item expanded "><a href="../zh/04_using_pseudo_classes.html"><strong aria-hidden="true">5.</strong> 使用伪类</a></li><li class="chapter-item expanded "><a href="../zh/05_maniplulating.html"><strong aria-hidden="true">6.</strong> 控制内容</a></li><li class="chapter-item expanded "><a href="../zh/06_traversing.html"><strong aria-hidden="true">7.</strong> 连调</a></li><li class="chapter-item expanded "><a href="../en/api.html"><strong aria-hidden="true">8.</strong> Api</a></li><li class="chapter-item expanded "><a href="../zh/08_scraping.html"><strong aria-hidden="true">9.</strong> 爬取</a></li><li class="chapter-item expanded "><a href="../zh/09_tips.html"><strong aria-hidden="true">10.</strong> tips</a></li><li class="chapter-item expanded "><a href="../zh/10_testing.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li class="chapter-item expanded "><a href="../zh/11_future.html"><strong aria-hidden="true">12.</strong> 计划</a></li><li class="chapter-item expanded "><a href="../zh/changes.html"><strong aria-hidden="true">13.</strong> 历史</a></li><li class="chapter-item expanded "><a href="../zh/13_more_doc.html"><strong aria-hidden="true">14.</strong> 更多文档</a></li><li class="chapter-item expanded "><a href="../en/genindex.html"><strong aria-hidden="true">15.</strong> Index</a></li><li class="chapter-item expanded "><a href="../en/py-modindex.html"><strong aria-hidden="true">16.</strong> Module Index</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../en/index.html">原文</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">基于原版本1.4.3翻译</li><li class="chapter-item expanded "><a href="../zh/index.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../zh/01_quick_start.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="../zh/02_attributes.html"><strong aria-hidden="true">3.</strong> 属性</a></li><li class="chapter-item expanded "><a href="../zh/03_css.html"><strong aria-hidden="true">4.</strong> css</a></li><li class="chapter-item expanded "><a href="../zh/04_using_pseudo_classes.html"><strong aria-hidden="true">5.</strong> 使用伪类</a></li><li class="chapter-item expanded "><a href="../zh/05_maniplulating.html" class="active"><strong aria-hidden="true">6.</strong> 控制内容</a></li><li class="chapter-item expanded "><a href="../zh/06_traversing.html"><strong aria-hidden="true">7.</strong> 连调</a></li><li class="chapter-item expanded "><a href="../en/api.html"><strong aria-hidden="true">8.</strong> Api</a></li><li class="chapter-item expanded "><a href="../zh/08_scraping.html"><strong aria-hidden="true">9.</strong> 爬取</a></li><li class="chapter-item expanded "><a href="../zh/09_tips.html"><strong aria-hidden="true">10.</strong> tips</a></li><li class="chapter-item expanded "><a href="../zh/10_testing.html"><strong aria-hidden="true">11.</strong> 测试</a></li><li class="chapter-item expanded "><a href="../zh/11_future.html"><strong aria-hidden="true">12.</strong> 计划</a></li><li class="chapter-item expanded "><a href="../zh/changes.html"><strong aria-hidden="true">13.</strong> 历史</a></li><li class="chapter-item expanded "><a href="../zh/13_more_doc.html"><strong aria-hidden="true">14.</strong> 更多文档</a></li><li class="chapter-item expanded "><a href="../en/genindex.html"><strong aria-hidden="true">15.</strong> Index</a></li><li class="chapter-item expanded "><a href="../en/py-modindex.html"><strong aria-hidden="true">16.</strong> Module Index</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../en/index.html">原文</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,23 +134,81 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="pyquery文档"><a class="header" href="#pyquery文档">PyQuery文档</a></h1>
-<p><code>pyquery</code> 允许您对 <strong>xml</strong> 文档进行 <strong>jquery</strong> 查询。 <strong>API</strong> 尽可能地类似于 <a href="https://jquery.com/">jquery</a>。 <code>pyquery</code> 使用 <a href="https://lxml.de/">lxml</a> 包 进行快速 <code>xml</code> 和 <code>html</code> 操作。</p>
-<p>这不是（或至少现在还不是）生成或与 <code>javascript</code> 代码交互的库。 我只是喜欢 <code>jquery API</code>，但我在 <code>python</code> 中错过了它，所以我告诉自己“嘿，让我们在 <code>python</code> 中制作 <code>jquery</code>”。 这就是结果。</p>
-<p>该<a href="https://github.com/gawel/pyquery/">项目</a>正在 Github 上的 git 存储库上积极开发。 我的政策是向任何想要它的人提供推送访问权限，然后审查他们所做的事情。 因此，如果您想贡献，请给我发电子邮件。</p>
-<p>请在 <a href="https://github.com/gawel/pyquery/issues">github</a> 问题跟踪器上报告错误。</p>
-<p>我花了好几个小时维护这个软件，充满爱意。 如果您喜欢，请考虑给小费：</p>
-<ul>
-<li><strong>BTC</strong>: 1PruQAwByDndFZ7vTeJhyWefAghaZx9RZg</li>
-<li><strong>ETH</strong>: 0xb6418036d8E06c60C4D91c17d72Df6e1e5b15CE6</li>
-<li><strong>LTC</strong>: LY6CdZcDbxnBX9GFBJ45TqVj8NykBBqsmT</li>
-</ul>
+                        <h1 id="控制内容"><a class="header" href="#控制内容">控制内容</a></h1>
+<p>您还可以在标签末尾添加内容：</p>
+<pre><code class="language-python">&gt;&gt;&gt; d = pq('&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;you know Python rocks&lt;/p&gt;')
+&gt;&gt;&gt; d('p').append(' check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;&lt;span&gt;reddit&lt;/span&gt;&lt;/a&gt;')
+[&lt;p#hello.hello&gt;]
+&gt;&gt;&gt; print(d)
+&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;you know Python rocks check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;&lt;span&gt;reddit&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<p>或从头开始：</p>
+<pre><code class="language-python">&gt;&gt;&gt; p = d('p')
+&gt;&gt;&gt; p.prepend('check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;reddit&lt;/a&gt;')
+[&lt;p#hello.hello&gt;]
+&gt;&gt;&gt; print(p.html())
+check out &lt;a href=&quot;http://reddit.com/r/python&quot;&gt;reddit&lt;/a&gt;you know ...
+</code></pre>
+<p>将一个元素添加或附加到另一个元素中：</p>
+<pre><code class="language-python">&gt;&gt;&gt; d = pq('&lt;html&gt;&lt;body&gt;&lt;div id=&quot;test&quot;&gt;&lt;a href=&quot;http://python.org&quot;&gt;python&lt;/a&gt; !&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;')
+p.prependTo(d('#test'))
+[&lt;p#hello.hello&gt;]
+print(d('#test').html())
+&lt;p class=&quot;hello&quot; ...
+</code></pre>
+<p>在一个元素后面插入一个元素</p>
+<pre><code class="language-python">&gt;&gt;&gt; p.insertAfter(d('#test'))
+[&lt;p#hello.hello&gt;]
+&gt;&gt;&gt; print(d('#test').html())
+&lt;a href=&quot;http://python.org&quot;&gt;python&lt;/a&gt; !
+</code></pre>
+<p>或之前:</p>
+<pre><code class="language-python">&gt;&gt;&gt; p.insertBefore(d('#test'))
+[&lt;p#hello.hello&gt;]
+&gt;&gt;&gt; print(d('body').html())
+&lt;p class=&quot;hello&quot; id=&quot;hello&quot;&gt;...
+</code></pre>
+<p>为每个元素做某些事：</p>
+<pre><code class="language-python">&gt;&gt;&gt; p.each(lambda i, e: pq(e).addClass('hello2'))
+[&lt;p#hello.hello.hello2&gt;]
+</code></pre>
+<p>删除一个元素:</p>
+<pre><code class="language-python">&gt;&gt;&gt; d = pq('&lt;html&gt;&lt;body&gt;&lt;p id=&quot;id&quot;&gt;Yeah!&lt;/p&gt;&lt;p&gt;python rocks !&lt;/p&gt;&lt;/div&gt;&lt;/html&gt;')
+&gt;&gt;&gt; d.remove('p#id')
+[&lt;html&gt;]
+&gt;&gt;&gt; d('p#id')
+[]
+</code></pre>
+<p>清空元素内容</p>
+<pre><code class="language-python">&gt;&gt;&gt; d('p').empty()
+[&lt;p&gt;]
+
+</code></pre>
+<p>你可以取回修改后的html：</p>
+<pre><code class="language-python">&gt;&gt;&gt; print(d)
+&lt;html&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+<p>你可以生成 html ：</p>
+<pre><code class="language-python">&gt;&gt;&gt; from pyquery import PyQuery as pq
+&gt;&gt;&gt; print(pq('&lt;div&gt;Yeah !&lt;/div&gt;').addClass('myclass') + pq('&lt;b&gt;cool&lt;/b&gt;'))
+&lt;div class=&quot;myclass&quot;&gt;Yeah !&lt;/div&gt;&lt;b&gt;cool&lt;/b&gt;
+</code></pre>
+<p>删除所有命名空间：</p>
+<pre><code class="language-python">&gt;&gt;&gt; d = pq('&lt;foo xmlns=&quot;http://example.com/foo&quot;&gt;&lt;/foo&gt;')
+&gt;&gt;&gt; d
+[&lt;{http://example.com/foo}foo&gt;]
+&gt;&gt;&gt; d.remove_namespaces()
+[&lt;foo&gt;]
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="../zh/01_quick_start.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="prev" href="../zh/04_using_pseudo_classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../zh/06_traversing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -159,7 +217,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="../zh/01_quick_start.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="prev" href="../zh/04_using_pseudo_classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../zh/06_traversing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
